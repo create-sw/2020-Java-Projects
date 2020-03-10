@@ -1,0 +1,84 @@
+该企业级权限管理系统的数据库中，共有11张表，我将其所有的表全部列出来，并将它们的关系写出。
+1.member 表
+  id int 主键自增 
+  name varchar 
+  nickName varchar
+  phoneNum varchar 
+  email varchar
+  
+2.orders 表
+  id int 主键自增
+  orderNum varchar 
+  orderTime timestamp
+  peopleCount int
+  orderDesc varchar
+  payType int 
+  orderStatus int 
+  productId int
+  memberid int
+  外键：member表的id，product表的id
+  
+3.product 表
+  id int 主键自增
+  productNum varchar 
+  productName varchar
+  cityName varchar
+  departureTime timestamp
+  productPrice double
+  productDesc varchar
+  productStatus int
+  
+4.permission 表
+  id int 主键自增
+  permissionName varchar
+  url varchar
+  
+5.role 表
+  id int 主键自增
+  roleName varchar
+  roleDesc varchar
+  
+6.syslog 表
+  id int 主键自增
+  visitTime timestamp
+  username varchar 
+  ip varchar
+  url varchar
+  executionTime int 
+  method varchar
+  
+7.traveller 表
+  id int 主键自增
+  name varchar
+  sex varchar
+  phoneNum varchar
+  credentialsType int
+  credentialsNum varchar
+  travellerType int
+ 
+8.users 表
+  id int 主键自增
+  email varchar
+  username varchar
+  password varchar
+  phoneNum varchar
+  status int
+  
+  
+9.order_traveller 表----->因为order和traveller表是多对多关系，需要中间表
+  orderId int  主键
+  travellerId int 主键
+  外键：orders表中的id，traveller表中的id
+  
+10.role_permission  表---->因为role和permission表是多对多关系，需要中间表
+  roleId int 主键
+  permissionId int 主键
+  外键：permission表中的id，role表中的id
+  
+11.users_role  表------>因为users和role表是多对多关系，需要中间表
+  userId int 主键
+  roleId int 主键
+  外键：users表中的id，role表中的id
+  
+PS：由于是第一次做项目没有经验，其实应该用sql语句写的，难受！
+  
